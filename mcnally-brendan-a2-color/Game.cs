@@ -22,18 +22,43 @@ namespace MohawkGame2D
 
         public void Setup()
         {
-            //Setting up the Visuals    
-            
+            //Setting up the Window Dimensions 
+
+            Window.SetSize(400, 400);
+            Window.SetTitle("SHAPESHIFTER");
+
 
         }
 
-        
+
         ///     Update runs every frame.
-        
+
         public void Update()
+        {
+
+            float r = Input.GetMouseX() / Window.Height;
+            float g = Input.GetMouseY() / Window.Width;
+            float b = 0.3f;
+
+            ColorF bgColor = new ColorF(r, g, b);
+            Window.ClearBackground(bgColor);
+
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            {
+
+            }
+
+
+
+
+
+        }
+        void DrawCircle();
         {
 
         }
     }
+
+
 
 }
