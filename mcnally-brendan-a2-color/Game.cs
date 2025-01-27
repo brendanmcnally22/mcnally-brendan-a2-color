@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Data;
 using System.Numerics;
 //  _____ _    _          _____  ______    _____ _    _ _____ ______ _______ ______ _____  
 //  / ____| |  | |   /\   |  __ \|  ____|  / ____| |  | |_   _|  ____|__   __|  ____|  __ \ 
@@ -37,28 +38,63 @@ namespace MohawkGame2D
         {
 
             float r = Input.GetMouseX() / Window.Height;
-            float g = Input.GetMouseY() / Window.Width;
-            float b = 0.3f;
+            float b = Input.GetMouseY() / Window.Width;
+            float g = 0.3f;
 
             ColorF bgColor = new ColorF(r, g, b);
             Window.ClearBackground(bgColor);
 
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            if (Input.IsKeyboardKeyDown(KeyboardInput.One))
             {
-
+                DrawCircle();
+                Draw.FillColor = (bgColor);
             }
 
+            // Adding the option to change shapes! SHAPESHIFTER! 
+            if (Input.IsKeyboardKeyDown(KeyboardInput.Two))
+            {
+                DrawTriangle();
+                Draw.FillColor = (bgColor);
+            }
 
-
-
+            if (Input.IsKeyboardKeyDown(KeyboardInput.Three))
+            {
+                DrawRectangle();
+                Draw.FillColor = (bgColor);
+            }
 
         }
-        void DrawCircle();
+        // Functions to Draw 
+      
+         
+        void DrawCircle()
+        {
+            // I LOVE TO DRAW CIRCLES
+            Draw.Circle(200, 200, 50);
+            Draw.LineSize = 3;
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Red;
+        }
+        void DrawTriangle()
+        {
+            // I LIKE RED TRIANGLES! I LOVE RED! LETS DRAW A TRIANGLE! WOO!
+            Draw.Triangle(200, 140, 150, 260, 250, 260);
+            Draw.LineSize = 3;
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Red;
+        }
+        void DrawRectangle()
         {
 
+            // I LOVE RECTANGLES AND GUESS WHAT! ITS GONNA BE RED AGAIN! WOO! 
+
+            Draw.Rectangle(200, 200, 200, 200);
+            Draw.LineSize = 3;
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Red;
         }
     }
 
 
-
 }
+
