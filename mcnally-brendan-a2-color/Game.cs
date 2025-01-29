@@ -11,8 +11,8 @@ using System.Numerics;
 //██████╦╝██║░░██║███████╗███████╗╚█████╔╝╚█████╔╝██║░╚███║  ██║░░░░░╚█████╔╝██║░░░░░██╗
 //╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░╚══╝  ╚═╝░░░░░░╚════╝░╚═╝░░░░░╚═╝
 
-// WELCOME TO BALLOON POP! MY PROTOTYPE INTERACTIVE 2D THING
-// IN THIS ACTIVITY/GAME YOU POP BALLOONS 
+// WELCOME TO BALLOON POP! MY PROTOTYPE INTERACTIVE 2D THING🎈🎈🎈
+// IN THIS ACTIVITY/GAME YOU POP BALLOONS 🎈🎈🎈
 namespace MohawkGame2D
 {
 
@@ -20,7 +20,7 @@ namespace MohawkGame2D
     {
         // Place our variables here:
 
-        int balloonCount = 0;
+        int balloonCount = 10;
         Vector2[] balloonPositions; // trying to make an array to store my balloons positions on the screen
         float balloonSpeed = 50.0f;
         
@@ -31,14 +31,16 @@ namespace MohawkGame2D
             Window.SetSize(400, 400);
             Window.SetTitle("Balloon Pop!");
 
-            balloonCount = 5;
+            float balloonSpacing = Window.Width / balloonCount;
+
+            balloonCount = 10;
             balloonPositions = new Vector2[balloonCount];
 
             for (int i = 0; i < balloonCount; i++)
             {
-                balloonPositions[i] = new Vector2(Random.Float(50, 350), Random.Float(300, 400));
+               
+                balloonPositions[i] = new Vector2(i * balloonSpacing + balloonSpacing / 2, Random.Float(300, 400));
             }
-
         }
 
 
@@ -47,13 +49,13 @@ namespace MohawkGame2D
         public void Update()
         {
             DrawBalloon();
-            // im trying to make the balloons go up
+            // im trying to make the balloons go up🎈
 
             for (int i = 0; i < balloonPositions.Length; i++)
             {
                 balloonPositions[i].Y -= balloonSpeed * Time.DeltaTime;
 
-                // ok now if the balloon goes off the screen it will reset to the bottom
+                // ok now if the balloon🎈 goes off the screen it will reset to the bottom
 
                 if (balloonPositions[i].Y < -50)
                 {
@@ -61,7 +63,7 @@ namespace MohawkGame2D
                 }
             }
 
-            // now lets make sure  when the mouse clicks it pops the balloon 
+            // now lets make sure🎈 when the mouse clicks it pops the balloon🎈 
 
             if (Input.IsMouseButtonPressed(MouseInput.Left))
             {
@@ -72,7 +74,7 @@ namespace MohawkGame2D
                         if (Vector2.Distance(mousePosition, balloonPositions[i]) < 30)
                         {
 
-                            // POP!
+                            // POP!🎈🎈🎈
 
                             balloonPositions[i] += new Vector2(MohawkGame2D.Random.Float(50, 350), 400);
                         }
@@ -86,11 +88,20 @@ namespace MohawkGame2D
 
                 Window.ClearBackground(Color.OffWhite);
 
-                Draw.FillColor = Random.Color(); // random balloon colors
+               
 
                 for (int i = 0; i < balloonPositions.Length; i++)
                 {
+                    //Draw BALLOON STRINGS 🎈🎈🎈]
+                    Draw.Line(balloonPositions[i].X, balloonPositions[i].Y + 25, // Bottom of Balloon 🎈🎈 wooo WOO!
+                        balloonPositions[i].X, balloonPositions[i].Y + 50); // Lower string
+
+                    // DRAW THE BALLOONNNNN
                     Draw.Circle(balloonPositions[i].X, balloonPositions[i].Y, 25);
+                    Draw.FillColor = Color.Red;
+                   
+
+
                 }
             }
 
