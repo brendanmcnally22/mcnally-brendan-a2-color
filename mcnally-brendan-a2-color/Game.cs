@@ -21,12 +21,15 @@ namespace MohawkGame2D
     {
         // Place our variables here:
 
+        int balloonCount = 0;
+        float balloonMultiplier = 0.0f;
+
         public void Setup()
         {
             //Setting up the Window Dimensions 
 
             Window.SetSize(400, 400);
-            Window.SetTitle("SHAPESHIFTER");
+            Window.SetTitle("Balloon Pop!");
 
 
         }
@@ -37,63 +40,15 @@ namespace MohawkGame2D
         public void Update()
         {
 
-            float r = Input.GetMouseX() / Window.Height;
-            float b = Input.GetMouseY() / Window.Width;
-            float g = 0.3f;
-
-            ColorF bgColor = new ColorF(r, g, b);
-            Window.ClearBackground(bgColor);
-
-            if (Input.IsKeyboardKeyDown(KeyboardInput.One))
-            {
-                DrawCircle();
-                Draw.FillColor = (bgColor);
-            }
-
-            // Adding the option to change shapes! SHAPESHIFTER! 
-            if (Input.IsKeyboardKeyDown(KeyboardInput.Two))
-            {
-                DrawTriangle();
-                Draw.FillColor = (bgColor);
-            }
-
-            if (Input.IsKeyboardKeyDown(KeyboardInput.Three))
-            {
-                DrawRectangle();
-                Draw.FillColor = (bgColor);
-            }
+            int[] Balloons = 
 
         }
         // Functions to Draw 
       
          
-        void DrawCircle()
-        {
-            // I LOVE TO DRAW CIRCLES
-            Draw.Circle(200, 200, 50);
-            Draw.LineSize = 3;
-            Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Red;
+        
         }
-        void DrawTriangle()
-        {
-            // I LIKE RED TRIANGLES! I LOVE RED! LETS DRAW A TRIANGLE! WOO!
-            Draw.Triangle(200, 140, 150, 260, 250, 260);
-            Draw.LineSize = 3;
-            Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Red;
-        }
-        void DrawRectangle()
-        {
-
-            // I LOVE RECTANGLES AND GUESS WHAT! ITS GONNA BE RED AGAIN! WOO! 
-
-            Draw.Rectangle(200, 200, 200, 200);
-            Draw.LineSize = 3;
-            Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Red;
-        }
-    }
+    
 
 
 }
