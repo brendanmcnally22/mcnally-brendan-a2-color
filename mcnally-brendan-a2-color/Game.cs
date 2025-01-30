@@ -20,11 +20,11 @@ namespace MohawkGame2D
     {
         // Place our variables here:
 
-        int balloonCount = 12;
+        int balloonCount = 12; // Amount of Balloons on Screen
         Vector2[] balloonPositions; // trying to make an array to store my balloons positions on the screen
-        float balloonSpeed = 50.0f;
+        float balloonSpeed = 50.0f; // Speed for Balloons
         int highScore = 0; // Players balloons popped
-        Font scoreFont; 
+        Color Skyblue = new Color(160, 217, 239); // Color for the background
         public void Setup() 
         {
             //Setting up the Window Dimensions 
@@ -59,8 +59,9 @@ namespace MohawkGame2D
             // im trying to make the balloons go up🎈
             MoveBalloons();
             checkBalloonPops();
-            drawGame();
-
+            drawBalloons();
+            drawClouds();
+            drawScoreboard();
         }
             
         
@@ -108,20 +109,24 @@ namespace MohawkGame2D
          
         
         // Drawing the Balloons, High score and Background
-            void drawGame()
-            { 
+            void drawBalloons()
+            {
+           
 
             // Clear background, probably going to change to skyblue i think
-                Window.ClearBackground(Color.OffWhite);
+                Window.ClearBackground(Skyblue);
                 
                 for (int i = 0; i < balloonPositions.Length; i++)
                 {
-                    //Drawing the Balloon strings
+                //Drawing the Balloon strings
+                Draw.LineSize = 3;
                     Draw.Line(balloonPositions[i].X, balloonPositions[i].Y + 25,
                         balloonPositions[i].X, balloonPositions[i].Y + 50);
 
                     //Drawing the balloons
                     Draw.FillColor = Color.Red;
+                Draw.LineSize = 3;
+                Draw.LineColor = Color.Black;
                     Draw.Circle(balloonPositions[i].X, balloonPositions[i].Y, 25);
 
                 }
@@ -132,8 +137,30 @@ namespace MohawkGame2D
                 
 
             }
+        void drawClouds() // Add clouds
+        {
+            for (int i = 0; i < 4; i++) // Using a Loop to draw 4 clouds
+            {
+                int x = 50 + i * 100;
+                Draw.FillColor = Color.White;
+                Draw.Circle(x, Window.Height, 75);
+            }
+        }
                
+        void drawScoreboard() // Draw Scoreboard
+        {
 
+
+            if (Input.IsKeyboardKeyDown(KeyboardInput.Space)) // press space to see the scoreboard
+            { 
+                Draw.Rectangle(320, 20, 60, 40);
+                Draw.LineColor = Color.Black;
+                Draw.LineSize = 3;
+                
+            }
+            
+           
+        }
 
         }
 
