@@ -20,8 +20,8 @@ namespace MohawkGame2D
     {
         // Place our variables here:
 
-        int balloonCount = 12; // Amount of Balloons on Screen
-        Vector2[] balloonPositions; // trying to make an array to store my balloons positions on the screen
+        int balloonCount = 12; // Amount of Balloons on Screen 
+        Vector2[] balloonPositions; // Vector2 Array for Balloon Positions :) 
         float balloonSpeed = 50.0f; // Speed for Balloons
         int highScore = 0; // Players balloons popped
         Color Skyblue = new Color(160, 217, 239); // Color for the background
@@ -57,9 +57,9 @@ namespace MohawkGame2D
         public void Update()
         {
             
-            MoveBalloons(); // Using functions to move the balloons on the screen
-            checkBalloonPops(); // Using functions to
-            drawBalloons(); // Using functions to
+            moveBalloons(); // Using functions to move the balloons on the screen
+            checkBalloonPops(); // Using functions to draw if the balloons are popped
+            drawBalloons(); // Using functions to draw the Balloons on the screen
             drawClouds(); // Using functions to draw the clouds
             drawScoreboard(); // Using functions to draw the scoreboard
         }
@@ -67,16 +67,16 @@ namespace MohawkGame2D
         
         // Functions to Draw
             // Moving the Balloons
-            void MoveBalloons()
+            void moveBalloons() // Function to move the Balloons
             {
-                for (int i = 0; i < balloonPositions.Length; i++)
-                {
+                for (int i = 0; i < balloonPositions.Length; i++)  // For loop to move the balloons on the screen
+            {
                     balloonPositions[i].Y -= balloonSpeed * Time.DeltaTime;
 
                     if (balloonPositions[i].Y < -50)
                     {
                         balloonPositions[i] = new Vector2(
-                            Random.Float(25, Window.Width - 25),
+                            Random.Float(25, Window.Width - 25), // Making sure it isn't going off the screen 
                             Window.Height
                             );
                     }
@@ -88,11 +88,11 @@ namespace MohawkGame2D
         // Checking the player mouse input aka Popping the Balloons
             void checkBalloonPops()
             {
-                if (Input.IsMouseButtonPressed(MouseInput.Left))
+                if (Input.IsMouseButtonPressed(MouseInput.Left)) // If the player clicks the balloon with the left mouse button, it will POP!
                 {
 
-                    Vector2 mousepositions = new Vector2(Input.GetMouseX(), Input.GetMouseY());
-                    for (int i = 0; i < balloonPositions.Length; i++)
+                    Vector2 mousepositions = new Vector2(Input.GetMouseX(), Input.GetMouseY()); // Using a vector 2 Array to store the mouse positions
+                for (int i = 0; i < balloonPositions.Length; i++)
 
 
                         if (Vector2.Distance(mousepositions, balloonPositions[i]) <30)
@@ -160,8 +160,6 @@ namespace MohawkGame2D
                 Vector2 scorePosition = new Vector2(330, 30);
                 Text.Color = Color.Black;
                 Text.Draw($"{highScore}", scorePosition);
-
-                
             }
             
            
