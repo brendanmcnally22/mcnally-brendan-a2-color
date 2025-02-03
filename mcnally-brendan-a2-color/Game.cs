@@ -30,21 +30,22 @@ namespace MohawkGame2D
             //Setting up the Window Dimensions 
 
             Window.SetSize(400, 400);
-            Window.SetTitle("Balloon Pop!");
+            Window.SetTitle("Balloon Pop!"); // Welcome to Balloon Pop!
 
-            float balloonSpacing = Window.Width / balloonCount;
+            float balloonSpacing = Window.Width / balloonCount; // Spacing the Balloons on the screen
 
            
-            balloonCount = 12;
-            balloonPositions = new Vector2[balloonCount];
+            balloonCount = 12; // Max amount of balloons on screen
+            balloonPositions = new Vector2[balloonCount]; // Using Vector2 Array to store balloon positions
 
             for (int i = 0; i < balloonCount; i++)
             {
 
-                balloonPositions[i] = new Vector2(
+                balloonPositions[i] = new Vector2( // Array for Balloon positions
                  Random.Float(25, Window.Width - 25),
                     Random.Float(300, Window.Height - 50)
                     );
+
                     
                 };
             }
@@ -55,13 +56,12 @@ namespace MohawkGame2D
 
         public void Update()
         {
-            //Test
-            // im trying to make the balloons go up🎈
-            MoveBalloons();
-            checkBalloonPops();
-            drawBalloons();
-            drawClouds();
-            drawScoreboard();
+            
+            MoveBalloons(); // Using functions to move the balloons on the screen
+            checkBalloonPops(); // Using functions to
+            drawBalloons(); // Using functions to
+            drawClouds(); // Using functions to draw the clouds
+            drawScoreboard(); // Using functions to draw the scoreboard
         }
             
         
@@ -131,9 +131,9 @@ namespace MohawkGame2D
 
                 }
 
-                // High score I still don't know how to get this on the screen properly yet, so lets figure that out next time.
+              
 
-                Vector2 scorePosition = new Vector2(Window.Width - 100, 10);
+                
                 
 
             }
@@ -153,9 +153,14 @@ namespace MohawkGame2D
 
             if (Input.IsKeyboardKeyDown(KeyboardInput.Space)) // press space to see the scoreboard
             { 
-                Draw.Rectangle(320, 20, 60, 40);
+                Draw.Rectangle(320, 20, 60, 40); // Drawing the Scoreboard 
                 Draw.LineColor = Color.Black;
                 Draw.LineSize = 3;
+
+                Vector2 scorePosition = new Vector2(330, 30);
+                Text.Color = Color.Black;
+                Text.Draw($"{highScore}", scorePosition);
+
                 
             }
             
