@@ -11,7 +11,7 @@ using System.Numerics;
 //██████╦╝██║░░██║███████╗███████╗╚█████╔╝╚█████╔╝██║░╚███║  ██║░░░░░╚█████╔╝██║░░░░░██╗
 //╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░╚══╝  ╚═╝░░░░░░╚════╝░╚═╝░░░░░╚═╝
 
-// WELCOME TO BALLOON POP! MY PROTOTYPE INTERACTIVE 2D THING🎈🎈🎈
+// WELCOME TO BALLOON POP! MY PROTOTYPE INTERACTIVE 2D GAME🎈🎈🎈
 // IN THIS ACTIVITY/GAME YOU POP BALLOONS 🎈🎈🎈
 namespace MohawkGame2D
 {
@@ -56,7 +56,7 @@ namespace MohawkGame2D
 
         public void Update()
         {
-            
+            // USING FUNCTIONS TO KEEP THE CODE CLEAN
             moveBalloons(); // Using functions to move the balloons on the screen
             checkBalloonPops(); // Using functions to draw if the balloons are popped
             drawBalloons(); // Using functions to draw the Balloons on the screen
@@ -113,7 +113,7 @@ namespace MohawkGame2D
             {
            
 
-            // Clear background, probably going to change to skyblue i think
+            // Clear background with the color Skyblue. 
                 Window.ClearBackground(Skyblue);
                 
                 for (int i = 0; i < balloonPositions.Length; i++)
